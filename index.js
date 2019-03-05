@@ -120,7 +120,8 @@ function handleEndButton() {
         score = 0;
         questionNumber = 0;
         $(this).removeClass('js-end-button').addClass('js-start-button');
-
+        renderProgress();
+        renderScore();
         quizStart();
     });
 }
