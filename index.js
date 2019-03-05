@@ -35,6 +35,8 @@ const QuestionData = [
   */
   let score = 0;
   let questionNumber = 0;
+  let questionText = '';
+  let buttonText = '';
   
   
   /*
@@ -44,31 +46,32 @@ const QuestionData = [
   // Quiz start functions
   function quizStart() {
     console.log('quizStart()');
-    let questionText = 'Are you ready to start?!';
-    let answers = [];
-    let buttonText = 'Let\'s go!';
-    quizRender(buttonText, questionText, answers);
+    questionText = 'Are you ready to start?!';
+    buttonText = 'Let\'s go!';
+    quizRender(buttonText, questionText);
     handleStartButton();
   }
   
   function handleStartButton() {
-      console.log('handleStartButton();');
       $('.js-quiz-body').on('click', '.js-start-button', function(event) {
         event.preventDefault();
-        console.log('click detected?');
         $(this).removeClass('js-start-button').addClass('js-answer-button');
+        quizLoop();
       });
-      quizLoop();
   }
   
   // Main quiz loop and logic
   function quizLoop() {
+    console.log('quizLoop()');
     // get and render current question
     // listen for the submit button
     // check answer and display result
     //$('.js-quiz-question').text(QuestionData[0].question);
-    console.log(QuestionData[0].question);
-    console.log('quizLoop()');
+    console.log($('.js-button').hasClass('js-answer-button'));
+    if($('.js-button').hasClass('js-answer-button')) {
+        console.log(QuestionData[0].question);
+        console.log('quizLoop()');
+    }
   }
   
 
@@ -79,9 +82,13 @@ const QuestionData = [
   
   // 'Generic' render function
   // Split this into differnet templates??
-  function quizRender(buttonText, questionText, answers) {
-    $('.js-quiz-question').text(questionText);
-    $('.js-button').text(buttonText);
+  function quizRender(buttonText = 'Okay!', questionText, answers = []) {
+      console.log('quizRender()');
+      $('.js-quiz-question').text(questionText);
+      $('.js-button').text(buttonText);
+      if(answers.length !== 0){
+
+      }
   }
   
   /*
@@ -89,10 +96,10 @@ const QuestionData = [
   */
   
   function runQuiz() {
+    quizRender();
     quizStart();
     quizLoop();
     quizEnd();
-    quizRender();
   }
   
   $(runQuiz);
