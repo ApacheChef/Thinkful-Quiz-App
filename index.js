@@ -1,3 +1,5 @@
+'use strict'
+
 /*
     *** Question data
 */
@@ -35,8 +37,11 @@ const QuestionData = [
   */
   let score = 0;
   let questionNumber = 0;
-  let questionText = '';
-  let buttonText = '';
+  // really, defining these two variables here is probably not good form
+  // They should be defined in the functions where they're needed rather
+  // than sitting up here as a global and still getting passed to fucntions
+//   let questionText = '';
+//   let buttonText = '';
   
   
   /*
@@ -46,10 +51,10 @@ const QuestionData = [
   // Quiz start functions
   function quizStart() {
     console.log('quizStart()');
-    questionText = 'Are you ready to start?!';
-    buttonText = 'Let\'s go!';
+    let questionText = 'Are you ready to start?!';
+    let buttonText = 'Let\'s go!';
     quizRender(buttonText, questionText);
-    handleStartButton();
+    //handleStartButton();
   }
   
   function handleStartButton() {
@@ -63,15 +68,20 @@ const QuestionData = [
   // Main quiz loop and logic
   function quizLoop() {
     console.log('quizLoop()');
-    // get and render current question
+    // get and render current question/answers
     // listen for the submit button
     // check answer and display result
     //$('.js-quiz-question').text(QuestionData[0].question);
-    console.log($('.js-button').hasClass('js-answer-button'));
     if($('.js-button').hasClass('js-answer-button')) {
         console.log(QuestionData[0].question);
         console.log('quizLoop()');
     }
+  }
+
+  function handleAnswerButton() {
+      $('.js-quiz-body').on('click', '.js-answer-button', function(event) {
+        console.log('Answer button clicked');
+      });
   }
   
 
@@ -100,6 +110,8 @@ const QuestionData = [
     quizStart();
     quizLoop();
     quizEnd();
+    handleStartButton();
+    handleAnswerButton();
   }
   
   $(runQuiz);
