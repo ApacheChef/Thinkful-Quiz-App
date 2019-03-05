@@ -1,12 +1,21 @@
 * {
     box-sizing: border-box;
+    font-family: 'Press Start 2P', cursive;
 }
 
 header {
     background-color: grey;
+    text-align: center;
 }
 
+ul {
+    list-style: none;
+}
+
+form {
+    background-color: lightgrey;
+}
 .answer {
     margin: 10px 0;
-    background-color: lightgrey;
+    background-color: grey;
 }

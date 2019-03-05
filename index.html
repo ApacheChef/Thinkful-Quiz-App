@@ -11,10 +11,14 @@
 </head>
 <body>
     <header>
-        <img src="https://picsum.photos/75/75/" alt="An arcade cabinet" />
         <h1>Quiz - A Smidge of Video Game History</h1>
-        <p>Question <span>0</span>/10<p>
-        <p>Score: <span>0</span></p>
+        <div class="question-number">
+            <p>Question: <span class="js-question-number">0</span>/10<p>
+        </div>
+        <div class="quiz-score">
+            <p>Score: <span class="js-score">0</span></p>
+        </div>
+
     </header>
     <main>
         <section class="js-quiz-body">
@@ -26,16 +30,16 @@
                         <label for="answer1">Text for answer 1</label>
                     </div>
                     <div class="answer">
-                        <input type="radio" name="answer1" id="answer1">
-                        <label for="answer1">Text for answer 1</label>
+                        <input type="radio" name="answer2" id="answer2">
+                        <label for="answer2">Text for answer 2</label>
                     </div>
                     <div class="answer">
-                        <input type="radio" name="answer1" id="answer1">
-                        <label for="answer1">Text for answer 1</label>
+                        <input type="radio" name="answer3" id="answer3">
+                        <label for="answer3">Text for answer 3</label>
                     </div>
                     <div class="answer">
-                        <input type="radio" name="answer1" id="answer1">
-                        <label for="answer1">Text for answer 1</label>
+                        <input type="radio" name="answer4" id="answer4">
+                        <label for="answer4">Text for answer 4</label>
                     </div>
                 </fieldset>
                 <button class="js-answer-button">Check your answer!</button>
