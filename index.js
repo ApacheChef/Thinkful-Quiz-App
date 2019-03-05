@@ -1,24 +1,6 @@
 'use strict'
 
 /*
-    *** Question data
-*/
-const QuestionData = [
-    {
-        questionNumber: 1,
-        question: "What is 1 + 1?",
-        answers: ['1', '4', '2', '6'],
-        correctAnswer: '2',
-    },
-    {
-        questionNumber: 2,
-        question: "What is 3 + 1?",
-        answers: ['6', '2', '10', '4'],
-        correctAnswer: '4',
-    }
-];
-  
-/*
     *** Button references
 */
 // const buttonStart = $('js-start-button');
@@ -55,9 +37,9 @@ function quizStart() {
   
 function handleStartButton() {
     $('.js-quiz-body').on('click', '.js-start-button', function(event) {
-    event.preventDefault();
-    $(this).removeClass('js-start-button').addClass('js-answer-button');
-    quizLoop();
+        event.preventDefault();
+        $(this).removeClass('js-start-button').addClass('js-answer-button');
+        quizLoop();
     });
 }
   
@@ -75,14 +57,15 @@ function quizLoop() {
 }
 
 function renderNextQuestion(qn) {
-    renderQuizBody('Check it!', QuestionData[qn].question, QuestionData[0].answers);
+    renderQuizBody('Check it!', QuestionData[qn].question, QuestionData[qn].answers);
 }
 
 function handleAnswerButton() {
     $('.js-quiz-body').on('click', '.js-answer-button', function(event) {
-    console.log('Answer button clicked');
-    $(this).removeClass('js-answer-button').addClass('js-next-button');
-    giveQuestionFeedback();
+        console.log('Answer button clicked');
+        $(this).removeClass('js-answer-button').addClass('js-next-button');
+        $('.js-button').text('Next >>>');
+        giveQuestionFeedback();
     });
 }
 
@@ -91,7 +74,7 @@ function giveQuestionFeedback() {
     let correct = checkAnswer(selectedAnswer);
     if(correct) {
         score += 1;
-        $('.js-score').text(score);
+        renderScore();
     }
     renderFeedback(correct);
 }
@@ -110,12 +93,14 @@ function handleNextButton() {
         $('.js-quiz-answers').html('');
         $('.js-answer-feedback').text('');
         $(this).removeClass('js-next-button');
+        // Move to the next question or end the quiz?
         if(questionNumber !== QuestionData.length - 1) {
             questionNumber += 1;
             $(this).addClass('js-answer-button');
             quizLoop();
         }
         else {
+            $(this).addClass('js-end-button');
             quizEnd();
         }
     });
@@ -124,10 +109,20 @@ function handleNextButton() {
 // Quiz end functions
 function quizEnd() {
     console.log('quizEnd()');
+    let buttonText = 'Play again?';
+    let displayText = `You final score is ${score}`;
+    renderQuizBody(buttonText, displayText);
 }
 
 function handleEndButton() {
     console.log('handleEndButton()');
+    $('.js-quiz-body').on('click', '.js-end-button', function(event) {
+        score = 0;
+        questionNumber = 0;
+        $(this).removeClass('js-end-button').addClass('js-start-button');
+
+        quizStart();
+    });
 }
   
 // 'Render' functions
@@ -170,6 +165,9 @@ function renderFeedback(correct) {
 function renderProgress() {
     $('.js-question-number').text(`Question: ${questionNumber + 1}/${QuestionData.length}`);
 }
+ function renderScore() {
+     $('.js-score').text(score);
+ }
 
 /*
     *** Ready function and high-level breakup of program logic
@@ -179,11 +177,11 @@ function runQuiz() {
     renderQuizBody();
     quizStart();
     quizLoop();
-    quizEnd();
+    //quizEnd();
     handleStartButton();
     handleAnswerButton();
     handleNextButton();
-
+    handleEndButton();
 }
   
 $(runQuiz);
