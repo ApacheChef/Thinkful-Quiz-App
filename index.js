@@ -120,7 +120,7 @@ function handleEndButton() {
         score = 0;
         questionNumber = 0;
         $(this).removeClass('js-end-button').addClass('js-start-button');
-
+        
         quizStart();
     });
 }
@@ -135,19 +135,19 @@ function renderQuizBody(buttonText = 'Oops!', questionText, answers = []) {
         $('.js-quiz-answers').html(
             `<fieldset>
                 <div class="answer">
-                    <input type="radio" name="answer1" id="answer1" >
+                    <input type="radio" name="answer" id="answer1" >
                     <label for="answer1">${answers[0]}</label>
                 </div>
                 <div class="answer">
-                    <input type="radio" name="answer2" id="answer2">
+                    <input type="radio" name="answer" id="answer2">
                     <label for="answer2">${answers[1]}</label>
                 </div>
                 <div class="answer">
-                    <input type="radio" name="answer3" id="answer3">
+                    <input type="radio" name="answer" id="answer3">
                     <label for="answer3">${answers[2]}</label>
                 </div>
                 <div class="answer">
-                    <input type="radio" name="answer4" id="answer4">
+                    <input type="radio" name="answer" id="answer4">
                     <label for="answer4">${answers[3]}</label>
                 </div>
             </fieldset>`
