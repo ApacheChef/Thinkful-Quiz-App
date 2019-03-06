@@ -32,7 +32,6 @@ function quizStart() {
     let questionText = 'Are you ready to start?!';
     let buttonText = 'Let\'s go!';
     renderQuizBody(buttonText, questionText);
-    //handleStartButton();
 }
   
 function handleStartButton() {
@@ -46,11 +45,7 @@ function handleStartButton() {
 // Main quiz loop and logic
 function quizLoop() {
     console.log('quizLoop()');
-    // get and render current question/answers
-    // listen for the submit button
-    // check answer and display result
-
-    if($('.js-button').hasClass('js-answer-button')) {
+     if($('.js-button').hasClass('js-answer-button')) {
         renderProgress();
         renderNextQuestion(questionNumber);
     }
@@ -62,6 +57,7 @@ function renderNextQuestion(qn) {
 
 function handleAnswerButton() {
     $('.js-quiz-body').on('click', '.js-answer-button', function(event) {
+        event.preventDefault();
         console.log('Answer button clicked');
         $(this).removeClass('js-answer-button').addClass('js-next-button');
         $('.js-button').text('Next >>>');
@@ -120,8 +116,7 @@ function handleEndButton() {
         score = 0;
         questionNumber = 0;
         $(this).removeClass('js-end-button').addClass('js-start-button');
-        renderProgress();
-        renderScore();
+
         quizStart();
     });
 }
@@ -133,27 +128,31 @@ function renderQuizBody(buttonText = 'Oops!', questionText, answers = []) {
     $('.js-quiz-question').text(questionText);
     $('.js-button').text(buttonText);
     if(answers.length !== 0){
-        $('.js-quiz-answers').html(
-            `<fieldset>
-                <div class="answer">
-                    <input type="radio" name="answer1" id="answer1" >
-                    <label for="answer1">${answers[0]}</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" name="answer2" id="answer2">
-                    <label for="answer2">${answers[1]}</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" name="answer3" id="answer3">
-                    <label for="answer3">${answers[2]}</label>
-                </div>
-                <div class="answer">
-                    <input type="radio" name="answer4" id="answer4">
-                    <label for="answer4">${answers[3]}</label>
-                </div>
-            </fieldset>`
-        );
+        renderQuizForm(answers);
     }
+}
+
+function renderQuizForm(answers) {
+    $('.js-quiz-answers').html(
+        `<fieldset>
+            <div class="answer">
+                <input type="radio" name="answer" id="answer1" required>
+                <label for="answer1">${answers[0]}</label>
+            </div>
+            <div class="answer">
+                <input type="radio" name="answer" id="answer2" required>
+                <label for="answer2">${answers[1]}</label>
+            </div>
+            <div class="answer">
+                <input type="radio" name="answer" id="answer3" required>
+                <label for="answer3">${answers[2]}</label>
+            </div>
+            <div class="answer">
+                <input type="radio" name="answer" id="answer4" required>
+                <label for="answer4">${answers[3]}</label>
+            </div>
+        </fieldset>`
+    );
 }
 
 function renderFeedback(correct) {
@@ -166,23 +165,21 @@ function renderFeedback(correct) {
 function renderProgress() {
     $('.js-question-number').text(`Question: ${questionNumber + 1}/${QuestionData.length}`);
 }
- function renderScore() {
-     $('.js-score').text(score);
- }
+
+function renderScore() {
+    $('.js-score').text(score);
+}
 
 /*
     *** Ready function and high-level breakup of program logic
 */
-
 function runQuiz() {
     renderQuizBody();
-    quizStart();
-    quizLoop();
-    //quizEnd();
     handleStartButton();
     handleAnswerButton();
     handleNextButton();
     handleEndButton();
+    quizStart();
 }
   
 $(runQuiz);
