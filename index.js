@@ -116,7 +116,8 @@ function handleEndButton() {
         score = 0;
         questionNumber = 0;
         $(this).removeClass('js-end-button').addClass('js-start-button');
-
+        renderScore();
+        renderProgress();
         quizStart();
     });
 }
@@ -159,7 +160,7 @@ function renderFeedback(correct) {
     $('.js-answer-feedback').text(
         correct ?
         `Correct!` :
-         `Incorrect. The right answer is ${QuestionData[questionNumber].correctAnswer}`);
+         `Incorrect. The right answer is ${QuestionData[questionNumber].correctAnswer}.`);
 }
 
 function renderProgress() {
