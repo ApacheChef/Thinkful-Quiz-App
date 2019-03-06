@@ -1,21 +1,116 @@
 * {
     box-sizing: border-box;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', Arial, Helvetica;
 }
 
+body, html {
+    height: 100%;
+}
+
+.full-image {
+    background-image: url("./backgrounds/platform_background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 100%;
+    background-color: rgb(120, 71, 52);
+    /* color: #e6e6e6; off-white */
+}
 header {
-    background-color: grey;
+    /* background-color: grey; */
     text-align: center;
+    /* height: 100px; */
+    padding: 10px;
 }
 
-ul {
-    list-style: none;
+header p {
+    margin: 10px 0 0 0;
 }
 
-form {
-    background-color: lightgrey;
+h1 {
+    margin: 0;
+    height: 50%;
 }
+
+main {
+    border: 1px solid black;
+    height: 100%;
+}
+
+.quiz-body {
+    width: 75%;
+    margin: 5px auto;
+}
+
+.quiz-question {
+    text-align: center;
+    margin: 20px 0;
+    /* background-color: rgba(50, 50, 50, .2); */
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+
 .answer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
     margin: 10px 0;
-    background-color: grey;
+    background-color: rgb(61, 169, 231);
+}
+
+input {
+    margin: 0 10px 0 0;
+}
+
+input:checked {
+    background-color: rgb(99, 179, 92);
+}
+
+.interface-button {
+    display: block;
+    background-color: rgb(134, 228, 78);
+    padding: 10px;
+    margin: 20px auto;
+    border-top: 5px solid rgba(168, 250, 121, 0.8);
+    border-left: 5px solid rgba(168, 250, 121, 0.8);
+    border-bottom: 5px solid rgba(97, 192, 43, 0.8);
+    border-right: 5px solid rgba(97, 192, 43, 0.8);
+    border-radius: 8px;
+}
+
+.answer-feedback {
+    text-align: center;
+    margin: 0;
+    min-height: 2em;
+    line-height: 200%;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    /* color: white; */
+}
+
+.incorrect {
+    background-color: rgb(249, 57, 67);
+}
+
+.correct {
+    background-color: rgb(99, 179, 92);
+    /* background-color: #15c997; */
+}
+
+@media screen and (min-height: 800px) {
+    
+    .full-image {
+        background-image: url("./backgrounds/platform_background_large.png");
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    .full-image {
+        background-image: url("./backgrounds/platform_background_x2.png");
+    }
 }

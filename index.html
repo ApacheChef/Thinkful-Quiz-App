@@ -7,9 +7,11 @@
     <meta name="description" content="A fun quiz to test your random knowledge about video game history.">
     <title>Quiz - Video Game History</title>
     <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="full-image">
     <header>
         <h1>A Byte of Video Game History</h1>
         <div class="question-number">
@@ -21,14 +23,13 @@
 
     </header>
     <main>
-        <section class="js-quiz-body">
-            <p class="js-quiz-question"></p>
-            <form class="js-quiz-answers">
+        <section class="quiz-body js-quiz-body">
+            <p class="quiz-question js-quiz-question"></p>
+            <form class="quiz-answers js-quiz-answers">
 
             </form>
+            <p class="answer-feedback js-answer-feedback"></p>
             <button type="submit" class="interface-button js-button js-start-button"></button>
-
-            <p class="js-answer-feedback"></p>
           <!-- <button class="answer-button js-button js-answer-button"></button>
           <button class="next-button js-button js-next-button"></button>
           <button class="restart-button js-button js-restart-button"></button> -->
@@ -61,8 +62,10 @@
             <button class="js-answer-button">Check your answer!</button>           
         </section>
     </main> -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="Question_Data.js"></script>
     <script src="index.js"></script>
+    </div>
 </body>
 </html>

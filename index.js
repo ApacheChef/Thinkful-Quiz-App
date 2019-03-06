@@ -88,6 +88,7 @@ function handleNextButton() {
         // Prepare for the next question or quiz end
         $('.js-quiz-answers').html('');
         $('.js-answer-feedback').text('');
+        $('.js-answer-feedback').removeClass("correct incorrect");
         $(this).removeClass('js-next-button');
         // Move to the next question or end the quiz?
         if(questionNumber !== QuestionData.length - 1) {
@@ -106,7 +107,7 @@ function handleNextButton() {
 function quizEnd() {
     console.log('quizEnd()');
     let buttonText = 'Play again?';
-    let displayText = `You final score is ${score}`;
+    let displayText = `Your final score is: ${score}`;
     renderQuizBody(buttonText, displayText);
 }
 
@@ -157,10 +158,16 @@ function renderQuizForm(answers) {
 }
 
 function renderFeedback(correct) {
-    $('.js-answer-feedback').text(
-        correct ?
-        `Correct!` :
-         `Incorrect. The right answer is ${QuestionData[questionNumber].correctAnswer}.`);
+    // $('.js-answer-feedback').text(
+    //     correct ?
+    //     `Correct!` :
+    //      `Incorrect. The right answer is ${QuestionData[questionNumber].correctAnswer}.`);
+    if (correct) {
+        $('.js-answer-feedback').text(`Correct!`).addClass("correct");
+    }
+    else {
+        $('.js-answer-feedback').text(`Incorrect. The right answer is ${QuestionData[questionNumber].correctAnswer}.`).addClass("incorrect");
+    }
 }
 
 function renderProgress() {
