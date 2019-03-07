@@ -76,10 +76,11 @@ function giveQuestionFeedback() {
 }
 
 function checkAnswer(answer) {
-    console.log(answer);
-    let temp = answer === QuestionData[questionNumber].correctAnswer;
-    console.log(temp);
-    return temp;
+    // console.log(answer);
+    // let temp = answer === QuestionData[questionNumber].correctAnswer;
+    // console.log(temp);
+    // return temp;
+    return answer === QuestionData[questionNumber].correctAnswer;
 }
 
 function handleNextButton() {
@@ -90,6 +91,7 @@ function handleNextButton() {
         $('.js-answer-feedback').text('');
         $('.js-answer-feedback').removeClass("correct incorrect");
         $(this).removeClass('js-next-button');
+        
         // Move to the next question or end the quiz?
         if(questionNumber !== QuestionData.length - 1) {
             questionNumber += 1;
