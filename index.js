@@ -38,6 +38,10 @@ function handleStartButton() {
     $('.js-quiz-body').on('click', '.js-start-button', function(event) {
         event.preventDefault();
         $(this).removeClass('js-start-button').addClass('js-answer-button');
+        // show question progress and score in header
+        $('.question-number').css('display', 'inline');
+        $('.quiz-score').css('display', 'inline');
+        renderScore();
         quizLoop();
     });
 }
@@ -70,6 +74,9 @@ function giveQuestionFeedback() {
     let correct = checkAnswer(selectedAnswer);
     if(correct) {
         score += 1;
+        renderScore();
+    }
+    else {
         renderScore();
     }
     renderFeedback(correct);
@@ -109,8 +116,11 @@ function handleNextButton() {
 function quizEnd() {
     console.log('quizEnd()');
     let buttonText = 'Play again?';
-    let displayText = `Your final score is: ${score}`;
+    let displayText = `Your final score is: ${score} of ${QuestionData.length}`;
     renderQuizBody(buttonText, displayText);
+    // Hide question progress and score in header
+    $('.question-number').css('display', 'none');
+    $('.quiz-score').css('display', 'none');
 }
 
 function handleEndButton() {
@@ -119,8 +129,6 @@ function handleEndButton() {
         score = 0;
         questionNumber = 0;
         $(this).removeClass('js-end-button').addClass('js-start-button');
-        renderScore();
-        renderProgress();
         quizStart();
     });
 }
@@ -177,7 +185,7 @@ function renderProgress() {
 }
 
 function renderScore() {
-    $('.js-score').text(score);
+    $('.js-score').text(`Score: ${score}`);
 }
 
 /*
