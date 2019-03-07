@@ -32,15 +32,16 @@ function quizStart() {
     let questionText = 'Are you ready to start?!';
     let buttonText = 'Let\'s go!';
     renderQuizBody(buttonText, questionText);
+    // Hide question progress and score in header
+    $('.question-number').css('display', 'none');
+    $('.quiz-score').css('display', 'none');
 }
   
 function handleStartButton() {
     $('.js-quiz-body').on('click', '.js-start-button', function(event) {
         event.preventDefault();
         $(this).removeClass('js-start-button').addClass('js-answer-button');
-        // show question progress and score in header
-        $('.question-number').css('display', 'inline');
-        $('.quiz-score').css('display', 'inline');
+        renderProgressInformationToggle();
         renderScore();
         quizLoop();
     });
@@ -83,10 +84,6 @@ function giveQuestionFeedback() {
 }
 
 function checkAnswer(answer) {
-    // console.log(answer);
-    // let temp = answer === QuestionData[questionNumber].correctAnswer;
-    // console.log(temp);
-    // return temp;
     return answer === QuestionData[questionNumber].correctAnswer;
 }
 
@@ -118,9 +115,7 @@ function quizEnd() {
     let buttonText = 'Play again?';
     let displayText = `Your final score is: ${score} of ${QuestionData.length}`;
     renderQuizBody(buttonText, displayText);
-    // Hide question progress and score in header
-    $('.question-number').css('display', 'none');
-    $('.quiz-score').css('display', 'none');
+    renderProgressInformationToggle();
 }
 
 function handleEndButton() {
@@ -186,6 +181,17 @@ function renderProgress() {
 
 function renderScore() {
     $('.js-score').text(`Score: ${score}`);
+}
+
+function renderProgressInformationToggle() {
+    if ($('.quiz-score').css('display') === 'none') {
+        $('.question-number').css('display', 'inline');
+        $('.quiz-score').css('display', 'inline');
+    }
+    else {
+        $('.question-number').css('display', 'none');
+        $('.quiz-score').css('display', 'none');
+    }
 }
 
 /*

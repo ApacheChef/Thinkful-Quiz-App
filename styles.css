@@ -88,7 +88,6 @@ input:checked {
     line-height: 200%;
     border: 1px solid transparent;
     border-radius: 8px;
-    /* color: white; */
 }
 
 .incorrect {
