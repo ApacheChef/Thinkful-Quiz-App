@@ -4,7 +4,10 @@
 }
 
 html {
-    /* Thank you CSS Tricks */
+    /*
+        Thank you CSS Tricks: https://css-tricks.com/perfect-full-page-background-image/
+        background image sourced from: https://www.vectorstock.com/royalty-free-vector/pixel-8bit-game-background-with-ground-and-vector-14922360
+    */
     background: url("./backgrounds/platform_background.png") no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -13,9 +16,7 @@ html {
 }
 
 header {
-    /* background-color: grey; */
     text-align: center;
-    /* height: 100px; */
     padding: 10px;
 }
 
@@ -96,7 +97,6 @@ input:checked {
 
 .correct {
     background-color: hsl(115, 59%, 53%);
-    /* background-color: #15c997; */
 }
 
 @media screen and (min-width: 760px) {
