@@ -122,9 +122,13 @@ input:checked {
 
 @media screen and (max-width: 400px) {
     /*
-        Reduce the heding size on smaller screens
+        Reduce the heading text size on smaller screens
     */
     h1 {
         font-size: 1.25em;
+    }
+
+    header p {
+        font-size: .9em;
     }
 }
