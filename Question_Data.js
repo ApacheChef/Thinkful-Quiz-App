@@ -30,7 +30,7 @@ const QuestionData = [
     },
     {
         questionNumber: 5,
-        question: 'Nolan Bushnell co-founded Atari and developed/founded what popular entertainment franchise?',
+        question: 'Nolan Bushnell co-founded Atari and founded which popular entertainment franchise?',
         answers: ['ShowBiz Pizza', 'Chuck E. Cheese', 'Dave and Buster\'s', 'None of these'],
         correctAnswer: 'Chuck E. Cheese',
     },
@@ -48,7 +48,7 @@ const QuestionData = [
     },
     {
         questionNumber: 8,
-        question: 'While not the first video game for entertainment, that distinction goes to \'Tennis for Two\', which of these is considered the first widely available video game?',
+        question: '\'Tennis for Two\' is considered the first video game for entertainment. Which of these is considered the first \'widely\' available video game?',
         answers: ['Pong', 'Computer Space', 'SpaceWar!', 'Space Invaders'],
         correctAnswer: 'SpaceWar!',
     },

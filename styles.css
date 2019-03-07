@@ -1,21 +1,130 @@
 * {
     box-sizing: border-box;
-    font-family: 'Press Start 2P', cursive;
+    font-family: 'Press Start 2P', Arial, Helvetica;
+}
+
+html {
+    /* Thank you CSS Tricks */
+    background: url("./backgrounds/platform_background.png") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 header {
-    background-color: grey;
+    /* background-color: grey; */
     text-align: center;
+    /* height: 100px; */
+    padding: 10px;
 }
 
-ul {
-    list-style: none;
+header p {
+    margin: 10px 0 0 0;
 }
 
-form {
-    background-color: lightgrey;
+h1 {
+    margin: 0;
+    height: 50%;
 }
+
+.quiz-body {
+    width: 75%;
+    margin: 5px auto;
+}
+
+.quiz-question {
+    text-align: center;
+    margin: 20px 0;
+}
+
+fieldset {
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
 .answer {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px;
     margin: 10px 0;
-    background-color: grey;
+    background-color: rgb(61, 169, 231);
+}
+
+input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0 10px 0 0;
+    border: 2px solid black;
+    /* border-radius: 90px; */
+    min-width: 20px;
+    height: 20px;
+    transition-duration: .5s;
+}
+
+input:checked {
+    background-color: rgb(134, 228, 78);
+}
+
+.interface-button {
+    display: block;
+    background-color: rgb(134, 228, 78);
+    padding: 10px;
+    margin: 20px auto;
+    border-top: 5px solid rgba(168, 250, 121, 0.8);
+    border-left: 5px solid rgba(168, 250, 121, 0.8);
+    border-bottom: 5px solid rgba(97, 192, 43, 0.8);
+    border-right: 5px solid rgba(97, 192, 43, 0.8);
+    border-radius: 8px;
+}
+
+.answer-feedback {
+    text-align: center;
+    margin: 0;
+    min-height: 2em;
+    line-height: 200%;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    /* color: white; */
+}
+
+.incorrect {
+    background-color: rgb(249, 57, 67);
+}
+
+.correct {
+    background-color: hsl(115, 59%, 53%);
+    /* background-color: #15c997; */
+}
+
+@media screen and (min-width: 760px) {
+    /*
+        Reduce the max width of the quiz form on wider screens
+        so the information isn't shifted far to the left.
+    */
+    .quiz-body {
+        max-width: 50%;
+        margin: 5px auto;
+    }
+}
+
+@media screen and (min-height: 900px) {
+    /*
+        Move the quiz form down some on taller screens to reduce
+        dead space at the bottom
+    */
+    .quiz-body {
+        margin: 100px auto;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    /*
+        Reduce the heding size on smaller screens
+    */
+    h1 {
+        font-size: 1.25em;
+    }
 }
