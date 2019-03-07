@@ -28,7 +28,6 @@ let questionNumber = 0;
 
 // Quiz start functions
 function quizStart() {
-    console.log('quizStart()');
     let questionText = 'Are you ready to start?!';
     let buttonText = 'Let\'s go!';
     renderQuizBody(buttonText, questionText);
@@ -41,7 +40,7 @@ function handleStartButton() {
     $('.js-quiz-body').on('click', '.js-start-button', function(event) {
         event.preventDefault();
         $(this).removeClass('js-start-button').addClass('js-answer-button');
-        renderProgressInformationToggle();
+        progressInformationToggle();
         renderScore();
         quizLoop();
     });
@@ -49,7 +48,6 @@ function handleStartButton() {
   
 // Main quiz loop and logic
 function quizLoop() {
-    console.log('quizLoop()');
      if($('.js-button').hasClass('js-answer-button')) {
         renderProgress();
         renderNextQuestion(questionNumber);
@@ -63,7 +61,6 @@ function renderNextQuestion(qn) {
 function handleAnswerButton() {
     $('.js-quiz-body').on('click', '.js-answer-button', function(event) {
         event.preventDefault();
-        console.log('Answer button clicked');
         $(this).removeClass('js-answer-button').addClass('js-next-button');
         $('.js-button').text('Next >>>');
         giveQuestionFeedback();
@@ -88,7 +85,6 @@ function checkAnswer(answer) {
 }
 
 function handleNextButton() {
-    console.log('handleNextButton()');
     $('.js-quiz-body').on('click', '.js-next-button', function(event) {
         // Prepare for the next question or quiz end
         $('.js-quiz-answers').html('');
@@ -111,15 +107,13 @@ function handleNextButton() {
 
 // Quiz end functions
 function quizEnd() {
-    console.log('quizEnd()');
     let buttonText = 'Play again?';
     let displayText = `Your final score is: ${score} of ${QuestionData.length}`;
     renderQuizBody(buttonText, displayText);
-    renderProgressInformationToggle();
+    progressInformationToggle();
 }
 
 function handleEndButton() {
-    console.log('handleEndButton()');
     $('.js-quiz-body').on('click', '.js-end-button', function(event) {
         score = 0;
         questionNumber = 0;
@@ -131,7 +125,6 @@ function handleEndButton() {
 // 'Render' functions
 // Split this into differnet templates??
 function renderQuizBody(buttonText = 'Oops!', questionText, answers = []) {
-    console.log('renderQuizBody()');
     $('.js-quiz-question').text(questionText);
     $('.js-button').text(buttonText);
     if(answers.length !== 0){
@@ -183,7 +176,7 @@ function renderScore() {
     $('.js-score').text(`Score: ${score}`);
 }
 
-function renderProgressInformationToggle() {
+function progressInformationToggle() {
     if ($('.quiz-score').css('display') === 'none') {
         $('.question-number').css('display', 'inline');
         $('.quiz-score').css('display', 'inline');
