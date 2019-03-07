@@ -32,8 +32,7 @@ function quizStart() {
     let buttonText = 'Let\'s go!';
     renderQuizBody(buttonText, questionText);
     // Hide question progress and score in header
-    $('.question-number').css('display', 'none');
-    $('.quiz-score').css('display', 'none');
+    $('.question-number, .quiz-score').css('display', 'none');
 }
   
 function handleStartButton() {
@@ -128,11 +127,11 @@ function renderQuizBody(buttonText = 'Oops!', questionText, answers = []) {
     $('.js-quiz-question').text(questionText);
     $('.js-button').text(buttonText);
     if(answers.length !== 0){
-        renderQuizForm(answers);
+        quizFormTemplate(answers);
     }
 }
 
-function renderQuizForm(answers) {
+function quizFormTemplate(answers) {
     $('.js-quiz-answers').html(
         `<fieldset>
             <div class="answer">
@@ -156,10 +155,6 @@ function renderQuizForm(answers) {
 }
 
 function renderFeedback(correct) {
-    // $('.js-answer-feedback').text(
-    //     correct ?
-    //     `Correct!` :
-    //      `Incorrect. The right answer is ${QuestionData[questionNumber].correctAnswer}.`);
     if (correct) {
         $('.js-answer-feedback').text(`Correct!`).addClass("correct");
     }
@@ -169,7 +164,8 @@ function renderFeedback(correct) {
 }
 
 function renderProgress() {
-    $('.js-question-number').text(`Question: ${questionNumber + 1}/${QuestionData.length}`);
+    //$('.js-question-number').text(`Question: ${questionNumber + 1}/${QuestionData.length}`);
+    $('.js-question-number').text(`Question: ${QuestionData[questionNumber].qNumber}/${QuestionData.length}`);
 }
 
 function renderScore() {
@@ -178,12 +174,10 @@ function renderScore() {
 
 function progressInformationToggle() {
     if ($('.quiz-score').css('display') === 'none') {
-        $('.question-number').css('display', 'inline');
-        $('.quiz-score').css('display', 'inline');
+        $('.question-number, .quiz-score').css('display', 'inline');
     }
     else {
-        $('.question-number').css('display', 'none');
-        $('.quiz-score').css('display', 'none');
+        $('.question-number, .quiz-score').css('display', 'none');
     }
 }
 
